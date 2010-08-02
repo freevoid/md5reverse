@@ -10,7 +10,7 @@ Or as a simple unary function from python code:
 
 >>> import hashlib, md5reverse
 >>> md5sum = lambda hash: hashlib.md5(hash).hexdigest()
->>> md5reverse(md5sum("admin"))
+>>> md5reverse.md5reverse(md5sum("admin"))
 u'admin'
 
 Script using http://md5.noisette.ch/ as MD5 hash DB.
