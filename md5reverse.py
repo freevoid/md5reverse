@@ -7,7 +7,7 @@ from urllib2 import Request, urlopen
 
 MD5DB_URL = 'http://md5.noisette.ch/md5.php'
 
-__all__ = ['md5reverse']
+__all__ = ['md5reverse', 'graceful_md5reverse']
 
 def make_md5_lookup_url(hash):
     return '?'.join([MD5DB_URL, urlencode({'hash': hash})])
@@ -29,9 +29,9 @@ def md5reverse(hash):
     Reverse md5 hash using XML-service from md5.noisette.ch
     Pretty straightforward:
 
-    >>> import md5
-    >>> md5sum = lambda hash: md5.md5(hash).hexdigest()
-    >>> md5lookup(md5sum("admin"))
+    >>> import hashlib
+    >>> md5sum = lambda hash: hashlib.md5(hash).hexdigest()
+    >>> md5reverse(md5sum("admin"))
     u'admin'
     """
     assert isinstance(hash, basestring)
@@ -40,9 +40,9 @@ def md5reverse(hash):
     f = urlopen(r)
     return parse_response(f.read())
 
-def graceful_md5lookup(hash):
+def graceful_md5reverse(hash):
     try:
-        md5reverse(hash)
+        return md5reverse(hash)
     except BaseException, e:
         return ('error', e)
 
