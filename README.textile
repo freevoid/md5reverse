@@ -1,25 +1,25 @@
-Overview
---------
+h1. Overview
 
 This tiny script is intended to be used as md5 reverse mechanism.
 It can be used directly from shell:
 
-./md5reverse.py <md5_hex_digest>
+bc. ./md5reverse.py <md5_hex_digest>
 
 Or as a simple unary function from python code:
 
->>> import hashlib, md5reverse
+bc.. >>> import hashlib, md5reverse
 >>> md5sum = lambda hash: hashlib.md5(hash).hexdigest()
 >>> md5reverse.md5reverse(md5sum("admin"))
 u'admin'
 
-Script using http://md5.noisette.ch/ as MD5 hash DB.
+p. Script using "http://md5.noisette.ch/":http://md5.noisette.ch/ as MD5 hash DB.
 
 For further info about possible exceptions and graceful variant
-graceful_md5reverse, see the code.
+@graceful_md5reverse@, see the code.
 
-Requirements
-------------
+h1. Requirements
 
-There is a single requirement: BeautifulSoup library.
+* "BeautifulSoup":http://www.crummy.com/software/BeautifulSoup/
+
+(c) 2010, Nikolay Zakharov.
 
